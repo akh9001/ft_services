@@ -1,6 +1,5 @@
 FROM alpine:3.11
 RUN apk update
-RUN apk upgrade
 RUN mkdir /run/nginx/
 RUN apk add nginx 
 RUN apk add vim openssl curl
@@ -14,7 +13,7 @@ COPY nginx.sh /
 EXPOSE 80
 EXPOSE 443
 EXPOSE 22
-ENTRYPOINT sh nginx.sh && sh
+#ENTRYPOINT sh nginx.sh && sh
 #RUN sh nginx.sh
-#CMD ["sh", "nginx.sh"]
+CMD ["sh", "/nginx.sh"]
 #CMD ["/usr/sbin/nginx", "-g", "daemon off;"]

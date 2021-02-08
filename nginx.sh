@@ -1,5 +1,6 @@
-#!/bin/bash
-rc-update add nginx
-mkdir /run/openrc/
+#!/bin/sh
+rc-status
 touch /run/openrc/softlevel
-/usr/sbin/nginx -g "daemon off;"  &
+echo "hello"
+rc-service nginx restart
+/bin/sh
