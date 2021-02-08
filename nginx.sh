@@ -1,6 +1,8 @@
 #!/bin/sh
 rc-status
 touch /run/openrc/softlevel
-echo "hello"
 rc-service nginx restart
+echo -e "asmaa@1999\nasmaa@1999" | adduser -h / asmaa
+apk add openssh-server
+rc-service sshd start
 /bin/sh
