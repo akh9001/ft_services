@@ -11,4 +11,4 @@ RUN rm -rf latest.tar.gz
 COPY wordpress.sh /
 COPY wp-config.php /var/www/wordpress/wp-config.php
 CMD ["sh", "wordpress.sh"]
-EXPOSE 5050 
+EXPOSE 5000 
