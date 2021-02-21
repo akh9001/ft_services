@@ -3,4 +3,5 @@ rc-status
 touch /run/openrc/softlevel
 rc-service php-fpm7 start
 rc-service nginx restart
-/bin/sh
+# /bin/sh
+sleep infinity

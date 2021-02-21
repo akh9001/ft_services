@@ -3,5 +3,6 @@ RUN apk update
 RUN apk add vim curl
 RUN apk add openrc --no-cache
 RUN apk add mysql mysql-client
+COPY mariadb-server.cnf /etc/my.cnf.d
 COPY mysql.sh /
 CMD ["sh", "mysql.sh"]

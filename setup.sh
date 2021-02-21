@@ -11,11 +11,15 @@ kubectl create secret generic -n metallb-system memberlist --from-literal=secret
 kubectl apply -f metallb/metallb.yaml 
 
 echo "Building images"
+
 docker build -t  nginx_image nginx/
+docker build -t  mysql_image mysql/
+docker build -t  wp_image wordpress/
 
 echo "Applying pods"
 
 kubectl apply -f nginx/nginx.yaml
-
+kubectl apply -f mysql/mysql.yaml
+kubectl apply -f wordpress/wp.yaml
 
 minikube dashboard
