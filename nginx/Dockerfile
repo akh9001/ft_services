@@ -2,7 +2,7 @@ FROM alpine:3.11
 RUN apk update
 RUN apk add nginx
 #openssl : allows us to create the certs
-RUN apk add vim openssl curl
+RUN apk add vim openssl curl mysql-client
 #openrc is a package,it contains rc-service tools which allows us to start nginx
 RUN apk add openrc --no-cache
 #RUN rm -rf /etc/nginx/conf.d/default.conf
