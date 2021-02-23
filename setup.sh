@@ -3,6 +3,7 @@ minikube start --driver=virtualbox
 eval $(minikube docker-env)
 
 echo "Starting metalLB"
+minikube addons metrics-server
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/namespace.yaml
 kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.3/manifests/metallb.yaml
 # On first install only
@@ -14,12 +15,12 @@ echo "Building images"
 
 docker build -t  nginx_image nginx/
 docker build -t  mysql_image mysql/
-docker build -t  wp_image wordpress/
+docker build -t  wordpress_image wordpress/
 
 echo "Applying pods"
 
 kubectl apply -f nginx/nginx.yaml
 kubectl apply -f mysql/mysql.yaml
-kubectl apply -f wordpress/wp.yaml
+kubectl apply -f wordpress/wordpress.yaml
 
 minikube dashboard

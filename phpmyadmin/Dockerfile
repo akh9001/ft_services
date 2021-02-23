@@ -12,5 +12,6 @@ RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-all-lang
 RUN unzip phpMyAdmin-5.0.4-all-languages.zip
 RUN mv phpMyAdmin-5.0.4-all-languages /var/www/phpmyadmin
 RUN rm -rf phpMyAdmin-5.0.4-all-languages.zip
+COPY config.inc.php /var/www/phpmyadmin
 CMD ["sh", "phpmyadmin.sh"]
 EXPOSE 5000
