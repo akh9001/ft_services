@@ -1,5 +1,6 @@
 minikube delete
-minikube start --driver=virtualbox
+# minikube start --driver=virtualbox
+minikube start --memory='3072' --driver=virtualbox
 eval $(minikube docker-env)
 
 echo "Starting metalLB"

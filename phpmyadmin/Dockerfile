@@ -12,6 +12,10 @@ RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.0.4/phpMyAdmin-5.0.4-all-lang
 RUN unzip phpMyAdmin-5.0.4-all-languages.zip
 RUN mv phpMyAdmin-5.0.4-all-languages /var/www/phpmyadmin
 RUN rm -rf phpMyAdmin-5.0.4-all-languages.zip
+# create tmp directory && give its l3aybat dyl droit 
+RUN mkdir /var/www/phpmyadmin/tmp
+RUN chmod 777 /var/www/phpmyadmin/tmp
 COPY config.inc.php /var/www/phpmyadmin
+COPY wp_db.sql /
 CMD ["sh", "phpmyadmin.sh"]
 EXPOSE 5000
