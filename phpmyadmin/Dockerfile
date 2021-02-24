@@ -16,6 +16,5 @@ RUN rm -rf phpMyAdmin-5.0.4-all-languages.zip
 RUN mkdir /var/www/phpmyadmin/tmp
 RUN chmod 777 /var/www/phpmyadmin/tmp
 COPY config.inc.php /var/www/phpmyadmin
-COPY wp_db.sql /
 CMD ["sh", "phpmyadmin.sh"]
 EXPOSE 5000
