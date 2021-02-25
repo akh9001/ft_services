@@ -6,4 +6,5 @@ RUN apk add mysql mysql-client
 COPY mariadb-server.cnf /etc/my.cnf.d
 COPY mysql.sh /
 COPY wp_db.sql /
+COPY phpmyadmin.sql /
 CMD ["sh", "mysql.sh"]
