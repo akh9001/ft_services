@@ -1,0 +1,12 @@
+FROM alpine:3.11
+RUN apk update
+RUN apk add vim wget
+RUN wget https://dl.grafana.com/oss/release/grafana-7.4.3.linux-amd64.tar.gz
+RUN tar -zxvf grafana-7.4.3.linux-amd64.tar.gz
+RUN rm -rf grafana-7.4.3.linux-amd64.tar.gz
+RUN mv grafana-7.4.3 grafana 
+RUN apk add libc6-compat
+COPY grafana.sh /
+# COPY wp-config.php /var/www/wordpress/wp-config.php
+CMD ["sh", "grafana.sh"]
+EXPOSE 3000 
