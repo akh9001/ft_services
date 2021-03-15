@@ -1,4 +1,5 @@
 #!/bin/sh
 cd grafana/bin
-./grafana-server
-/bin/sh
+./grafana-server &
+sleep infinity
+# /bin/sh

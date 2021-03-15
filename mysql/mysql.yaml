@@ -23,13 +23,18 @@ spec:
         ports:
         - containerPort: 3306
           name: mysql
-      #   volumeMounts:
-      #   - name: mysql-persistent-storage
-      #     mountPath: /var/lib/mysql
-      # volumes:
-      # - name: mysql-persistent-storage
-      #   persistentVolumeClaim:
-      #     claimName: mysql-pv-claim
+#Within the container, volumes are mounted at a specific path.
+#It's like a symbolic link from the container to the volume within the pod.
+        volumeMounts:
+        # name must match the volume name (in spec.volumes field)
+        - name: mysql-persistent-storage
+        # Where to mount this directory in our container
+          mountPath: /var/lib/mysql
+#volumes in pod is defined in spec.volumes field
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql-pv-claim
 ---
 apiVersion: v1
 kind: Service
@@ -45,3 +50,16 @@ spec:
     app: mysql
   type: ClusterIP
   clusterIP: 10.104.195.124
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pv-claim
+spec:
+  resources:
+    requests:
+      storage: 5Gi
+  volumeMode: Filesystem
+  # ReadWriteOnce : the volume can be mounted as read-write by a single node! 
+  accessModes:
+    - ReadWriteOnce
