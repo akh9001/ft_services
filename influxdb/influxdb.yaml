@@ -21,14 +21,18 @@ spec:
         ports:
         - containerPort: 8086
         volumeMounts:
-          # - name: influxdb-persistent-storage
-          #   mountPath: /root/.influxdb
+          - name: influxdb-persistent-storage
+            #mountPath: /root/.influxdb 
+            mountPath: /var/lib/influxdb
           - name: docker-storage
             mountPath: /var/run/docker.sock
       volumes:
       - name: docker-storage
         hostPath:
           path: /var/run/docker.sock
+      - name: influxdb-persistent-storage
+        persistentVolumeClaim:
+          claimName: influxdb-pv-claim
 ---
 apiVersion: v1
 kind: Service
@@ -41,4 +45,16 @@ spec:
   - port: 8086
     targetPort: 8086
   type: ClusterIP
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: influxdb-pv-claim
+spec:
+  resources:
+    requests:
+      storage: 5Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
 
