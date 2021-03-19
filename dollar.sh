@@ -1,4 +1,5 @@
 val=`ps`
-if [[ "zsh" =~ $val ]];then 
+#echo $val
+if [[ ! "zsh" =~ "$val" ]];then 
 	echo here
 fi

@@ -3,7 +3,7 @@ RUN apk update
 RUN apk add vsftpd 
 # lftp
 #openssl : allows us to create the certs
-RUN apk add vim openssl
+RUN apk add vim openssl 
 #openrc is a package,it contains rc-service tools which allows us to start nginx
 RUN apk add openrc --no-cache
 #RUN rm -rf /etc/nginx/conf.d/default.conf
