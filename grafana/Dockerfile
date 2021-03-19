@@ -7,7 +7,7 @@ RUN rm -rf grafana-7.4.3.linux-amd64.tar.gz
 RUN mv grafana-7.4.3 grafana 
 RUN apk add libc6-compat
 COPY grafana.sh /
+COPY health.sh /
 COPY grafana.db grafana/data/grafana.db 
-# COPY wp-config.php /var/www/wordpress/wp-config.php
 CMD ["sh", "grafana.sh"]
 EXPOSE 3000 

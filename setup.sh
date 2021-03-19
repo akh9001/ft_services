@@ -20,6 +20,7 @@ docker build -t  wordpress_image wordpress/
 docker build -t  phpmyadmin_image phpmyadmin/
 docker build -t  influxdb_image influxdb/
 docker build -t  grafana_image grafana/
+docker build -t  ftps_image ftps/
 
 echo "Applying pods"
 
@@ -29,5 +30,6 @@ kubectl apply -f wordpress/wordpress.yaml
 kubectl apply -f phpmyadmin/phpmyadmin.yaml
 kubectl apply -f influxdb/influxdb.yaml
 kubectl apply -f grafana/grafana.yaml
+kubectl apply -f ftps/ftps.yaml
 
 minikube dashboard
