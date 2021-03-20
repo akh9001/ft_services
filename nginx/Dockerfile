@@ -9,9 +9,9 @@ RUN apk add openrc --no-cache
 COPY nginx.conf /etc/nginx/nginx.conf
 #this cmd create the ssl certificate and place it in /etc/ssl/certs directory
 RUN yes "" | openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/certs/localhost.key -out /etc/ssl/certs/localhost.crt
-COPY nginx.sh /
-
+COPY start.sh /
+COPY health.sh /
 EXPOSE 80
 EXPOSE 443
 EXPOSE 22
-CMD ["sh", "/nginx.sh"]
+CMD ["sh", "/start.sh"]

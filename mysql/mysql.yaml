@@ -23,6 +23,13 @@ spec:
         ports:
         - containerPort: 3306
           name: mysql
+        livenessProbe:
+          exec:
+            command:
+              - sh
+              - health.sh
+          initialDelaySeconds: 30
+          periodSeconds: 10
 #Within the container, volumes are mounted at a specific path.
 #It's like a symbolic link from the container to the volume within the pod.
         volumeMounts:

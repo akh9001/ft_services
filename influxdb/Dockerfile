@@ -11,5 +11,6 @@ RUN apk add telegraf --repository=http://dl-cdn.alpinelinux.org/alpine/edge/comm
 
 RUN mkdir -p /etc/telegraf
 COPY telegraf.conf /etc/telegraf
-COPY influxdb.sh /
-CMD ["sh", "influxdb.sh"]
+COPY start.sh /
+COPY health.sh /
+CMD ["sh", "start.sh"]

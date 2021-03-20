@@ -6,8 +6,8 @@ RUN tar -zxvf grafana-7.4.3.linux-amd64.tar.gz
 RUN rm -rf grafana-7.4.3.linux-amd64.tar.gz
 RUN mv grafana-7.4.3 grafana 
 RUN apk add libc6-compat
-COPY grafana.sh /
+COPY start.sh /
 COPY health.sh /
 COPY grafana.db grafana/data/grafana.db 
-CMD ["sh", "grafana.sh"]
+CMD ["sh", "start.sh"]
 EXPOSE 3000 
